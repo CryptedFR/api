@@ -9,47 +9,46 @@
 |
 */
 
-import { Env } from "@adonisjs/core/env"
+import { Env } from "@adonisjs/core/env";
 
 export default await Env.create(new URL("../", import.meta.url), {
-  NODE_ENV: Env.schema.enum(["development", "production", "test"] as const),
-  PORT: Env.schema.number(),
-  APP_KEY: Env.schema.string(),
-  HOST: Env.schema.string({ format: "host" }),
-  LOG_LEVEL: Env.schema.enum([
-    "fatal",
-    "error",
-    "warn",
-    "info",
-    "debug",
-    "trace",
-  ]),
+	NODE_ENV: Env.schema.enum(["development", "production", "test"] as const),
+	PORT: Env.schema.number(),
+	APP_KEY: Env.schema.string(),
+	HOST: Env.schema.string({ format: "host" }),
+	LOG_LEVEL: Env.schema.enum([
+		"fatal",
+		"error",
+		"warn",
+		"info",
+		"debug",
+		"trace",
+	]),
 
-  /*
+	/*
 |----------------------------------------------------------
 | Variables for configuring database connection
 |----------------------------------------------------------
 */
-  DB_HOST: Env.schema.string({ format: "host" }),
-  DB_PORT: Env.schema.number(),
-  DB_USER: Env.schema.string(),
-  DB_PASSWORD: Env.schema.string.optional(),
-  DB_DATABASE: Env.schema.string(),
-
-  /*
+	DB_HOST: Env.schema.string({ format: "host" }),
+	DB_PORT: Env.schema.number(),
+	DB_USER: Env.schema.string(),
+	DB_PASSWORD: Env.schema.string.optional(),
+	DB_DATABASE: Env.schema.string(),
+	/*
   |----------------------------------------------------------
   | Variables for configuring the drive package
   |----------------------------------------------------------
   */
-  DRIVE_DISK: Env.schema.enum(['s3', 'spaces'] as const),
-  MINIO_ACCESS_KEY_ID: Env.schema.string(),
-  MINIO_SECRET_ACCESS_KEY: Env.schema.string(),
-  MINIO_REGION: Env.schema.string(),
-  MINIO_ENDPOINT: Env.schema.string(),
-  S3_BUCKET: Env.schema.string(),
-  SPACES_KEY: Env.schema.string(),
-  SPACES_SECRET: Env.schema.string(),
-  SPACES_REGION: Env.schema.string(),
-  SPACES_BUCKET: Env.schema.string(),
-  SPACES_ENDPOINT: Env.schema.string()
-})
+	DRIVE_DISK: Env.schema.enum(["s3", "spaces"] as const),
+	MINIO_ACCESS_KEY_ID: Env.schema.string(),
+	MINIO_SECRET_ACCESS_KEY: Env.schema.string(),
+	MINIO_REGION: Env.schema.string(),
+	MINIO_ENDPOINT: Env.schema.string(),
+	S3_BUCKET: Env.schema.string(),
+	SPACES_KEY: Env.schema.string(),
+	SPACES_SECRET: Env.schema.string(),
+	SPACES_REGION: Env.schema.string(),
+	SPACES_BUCKET: Env.schema.string(),
+	SPACES_ENDPOINT: Env.schema.string(),
+});

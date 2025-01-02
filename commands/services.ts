@@ -1,7 +1,7 @@
-import { args, BaseCommand } from "@adonisjs/core/ace";
-import type { CommandOptions } from "@adonisjs/core/types/ace";
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
+import { BaseCommand, args } from "@adonisjs/core/ace";
+import type { CommandOptions } from "@adonisjs/core/types/ace";
 
 const execAsync = promisify(exec);
 

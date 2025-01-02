@@ -10,12 +10,15 @@
 
 import router from "@adonisjs/core/services/router";
 import server from "@adonisjs/core/services/server";
+import vine from "@vinejs/vine";
+import { ValidationErrorReporter } from "#exceptions/ValidationErrorReporter";
 
 /**
  * The error handler is used to convert an exception
  * to a HTTP response.
  */
 server.errorHandler(() => import("#exceptions/handler"));
+vine.errorReporter = () => new ValidationErrorReporter();
 
 /**
  * The server middleware stack runs middleware on all the HTTP
