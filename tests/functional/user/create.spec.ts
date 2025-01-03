@@ -20,8 +20,8 @@ test.group("User Creation", (group) => {
 
 		const response = await client.post("/v1/user").json(payload);
 		response.assertStatus(201);
-
 		assert.equal(response.body().code, successCodes.USER_CREATED);
+
 		assert.equal(response.body().data.username, payload.username);
 		assert.equal(response.body().data.email, payload.email);
 		assert.equal(response.body().data.firstname, payload.firstname);

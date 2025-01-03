@@ -10,7 +10,7 @@ interface UserOverrides {
 	birthdate?: string;
 }
 
-const generateUsername = () => {
+export const generateUsername = () => {
 	const firstName = faker.person.firstName().toLowerCase();
 	const lastName = faker.person.lastName().toLowerCase();
 

@@ -23,13 +23,13 @@ type Options = {
  * @returns {Promise<void>} Resolves when the validation is complete.
  */
 async function exists(value: unknown, options: Options, field: FieldContext) {
-	if (typeof value !== "string") return;
-
 	const row = await db
 		.from(options.table)
 		.select(options.column)
-		.where(options.column, value)
+		.where(options.column, value as string)
 		.first();
+
+	console.log(row);
 
 	if (!row) {
 		field.report("The {{ field }} field does not exist", "exists", field);
