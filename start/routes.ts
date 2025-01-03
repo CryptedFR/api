@@ -11,6 +11,7 @@ const UsersController = () => import("#controllers/users_controller");
 const AuthController = () => import("#controllers/auth_controller");
 import router from "@adonisjs/core/services/router";
 import { middleware } from "./kernel.js";
+const FriendshipController = () => import("#controllers/friendship_controller");
 
 router.get("/", async () => {
 	return {
@@ -55,5 +56,22 @@ router
 			})
 			.prefix("user");
 		//
+
+		// Friendship routes
+		router
+			.group(() => {
+				router.get("/sent", [FriendshipController, "listSentRequests"]);
+				router.get("/received", [FriendshipController, "listReceivedRequests"]);
+				router.get("/list", [FriendshipController, "listFriends"]);
+				router.post("/request", [FriendshipController, "request"]);
+				router.delete("/friend/:requestId", [FriendshipController, "delete"]);
+				router.patch("/accept/:requestId", [FriendshipController, "accept"]);
+				router.patch("/reject/:requestId", [FriendshipController, "reject"]);
+				router.patch("/block/:userId", [FriendshipController, "block"]);
+				router.get("/block/list", [FriendshipController, "listBlocked"]);
+				router.patch("/unblock/:userId", [FriendshipController, "unblock"]);
+			})
+			.use(middleware.auth())
+			.prefix("friendship");
 	})
 	.prefix("v1");
